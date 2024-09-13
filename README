@@ -1,0 +1,36 @@
+LimineUpgrader - By Dusk - Released under The Unlicense
+Project *NOT* endorsed by Limine
+
+This is really just a small collection of files that adds a hook for Arch Linux to update Limine's stuff when you upgrade it.
+
+This project requires:
+ - Limine
+  ` https://github.com/limine-bootloader/limine
+ - efibootmgr
+  ` https://archlinux.org/packages/core/x86_64/efibootmgr/
+ - Arch Linux (as if I didn't already say that)
+  ` https://archlinux.org/
+
+Install instructions:
+
+1. Ensure you're running Arch Linux.
+2. Open src/update-limine.sh and go to line 20
+
+You will find this:
+	efibootmgr --create --label "Limine" --disk /dev/sdX --part 1 --loader '\EFI\BOOT\BOOTX64.EFI'
+Replace '/dev/sdX' with your disk.
+Replace the label with your EFI entry name - If you can't remember it, use 'efibootmgr' to do it.
+
+3. Write to the file, then run ./install.sh - You may need to 'sudo chmod +x install.sh' before you do.
+
+!!!!!!! BEFORE YOU RUN !!!!!!!!
+In the script's current state, it will make more of
+the exact same goddamn boot entry. I don't know why,
+but hopefully I can fix it soon. Maintainers or
+fixers extraordinarily welcome.
+
+Basically, make sure to remove any previous versions
+of the boot entry you wanna make.
+
+1. Run 'efibootmgr' and find the entry
+2. Exterminate it like a certain yelling salt shaker - 'sudo efibootmgr -b <boot entry number> -B'
