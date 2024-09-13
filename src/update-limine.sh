@@ -15,6 +15,9 @@ cp -f "$LIMINE_EFI_PATH" "$LIMINE_INSTALL_PATH" # Forcefully replace (if not alr
 
 # gonna be honest this part is kinda slapped together from like four stack overflow articles
 # not 110% sure this works *properly* on all systems - please submit an issue if it doesn't
+#
+# i dont want to know why, i shouldnt have to wonder why, but this keeps making
+# the exact same boot entry names under different numbers each time - TODO: fix this
 efibootmgr | grep -q "Limine"
 if [ $? -ne 0 ]; then
   efibootmgr --create --label "Limine" --disk /dev/sdX --part 1 --loader '\EFI\BOOT\BOOTX64.EFI'
