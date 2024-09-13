@@ -14,14 +14,15 @@ This project requires:
 Install instructions:
 
 1. Ensure you're running Arch Linux.
-2. Open src/update-limine.sh and go to line 20
+2. Clone the repo locally somewhere
+3. Open src/update-limine.sh and go to line 20
 
 You will find this:
 	efibootmgr --create --label "Limine" --disk /dev/sdX --part 1 --loader '\EFI\BOOT\BOOTX64.EFI'
 Replace '/dev/sdX' with your disk.
 Replace the label with your EFI entry name - If you can't remember it, use 'efibootmgr' to do it.
 
-3. Write to the file, then run ./install.sh - You may need to 'sudo chmod +x install.sh' before you do.
+4. Write to the file, then run ./install.sh - You may need to 'sudo chmod +x install.sh' before you do.
 
 !!!!!!! BEFORE YOU RUN !!!!!!!!
 In the script's current state, it will make more of
